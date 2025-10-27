@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e3f2fd 0%, #b3d9f2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .form-header h2 {
+            color: #1976d2;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #78909c;
+            font-size: 14px;
+        }
+        
+        .form-label {
+            color: #546e7a;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #42a5f5;
+            box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.15);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 14px 40px;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(25, 118, 210, 0.4);
+        }
+        
+        .form-check-input:checked {
+            background-color: #42a5f5;
+            border-color: #42a5f5;
+        }
+        
+        .form-check-label {
+            color: #546e7a;
+            font-size: 14px;
+        }
+        
+        .required {
+            color: #e53935;
+        }
+        
+        .policy-box {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Formulario de Contacto</h2>
+            <p>Por favor completa todos los campos requeridos</p>
+        </div>
+        
+        <form id="contactForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="nombre" class="form-label">Nombre <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="apellido" class="form-label">Apellido <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="tipoId" class="form-label">Tipo de Identificación <span class="required">*</span></label>
+                    <select class="form-select" id="tipoId" required>
+                        <option value="" selected disabled>Selecciona...</option>
+                        <option value="CC">Cédula de Ciudadanía (CC)</option>
+                        <option value="TI">Tarjeta de Identidad (TI)</option>
+                        <option value="PA">Pasaporte (PA)</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="numeroId" class="form-label">Número de Identificación <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="numeroId" placeholder="Número de documento" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento <span class="required">*</span></label>
+                    <input type="date" class="form-control" id="fechaNacimiento" required>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="numeroContacto" class="form-label">Número de Contacto <span class="required">*</span></label>
+                    <input type="tel" class="form-control" id="numeroContacto" placeholder="+57 300 123 4567" required>
+                </div>
+            </div>
+            
+            <div class="policy-box">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="politicaDatos" required>
+                    <label class="form-check-label" for="politicaDatos">
+                        <span class="required">*</span> Acepto la <a href="#" style="color: #1976d2; text-decoration: none;">política de tratamiento de datos personales</a> y autorizo el uso de mi información conforme a la normativa vigente.
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-submit">Enviar Formulario</button>
+        </form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                apellido: document.getElementById('apellido').value,
+                tipoId: document.getElementById('tipoId').value,
+                numeroId: document.getElementById('numeroId').value,
+                fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                numeroContacto: document.getElementById('numeroContacto').value,
+                politicaDatos: document.getElementById('politicaDatos').checked
+            };
+            
+            console.log('Datos del formulario:', formData);
+            alert('¡Formulario enviado correctamente! Revisa la consola para ver los datos.');
+        });
+    </script>
+</body>
+</html>
